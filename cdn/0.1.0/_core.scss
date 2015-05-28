@@ -1,0 +1,255 @@
+@mixin flexbox {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+// flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+@mixin flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex: $values;
+    -webkit-flex: $values;
+    -ms-flex: $values;
+    flex: $values;
+}
+
+// row, column, column-reverse, row-reverse;
+@mixin flex-direction($direction){
+     -webkit-flex-direction: $direction;
+    -ms-flex-direction: $direction;
+    flex-direction: $direction;
+}
+
+
+@mixin flex-align($align) {
+    -webkit-box-align: $align;
+    -webkit-flex-align: $align;
+    -ms-flex-align: $align;
+    -webkit-align-items: $align;
+    align-items: $align;
+}
+
+//flex-start, flex-end, space-between, space-around,
+@mixin justify-content($value) {
+    -webkit-justify-content: $value;
+    justify-content: $value;
+    @if $value == "space-around" {
+        -ms-flex-pack: distribute;
+    }
+    @else if $value == "space-between" {
+        -ms-flex-pack: justify;
+    }
+    @else if $value == "flex-start" {
+        -ms-flex-pack: start;
+    }
+    @else if $value == "flex-end" {
+        -ms-flex-pack: end;
+    }
+}
+
+@mixin order($val) {
+    -webkit-box-ordinal-group: $val;
+    -moz-box-ordinal-group: $val;
+    -ms-flex-order: $val;
+    -webkit-order: $val;
+    order: $val;
+}
+@mixin vendor($var, $value) {
+    -webkit-#{$var}: $value;
+    -khtml-#{$var}: $value;
+    -moz-#{$var}: $value;
+    -ms-#{$var}: $value;
+    -o-#{$var}: $value;
+    #{$var}: $value;
+}
+
+@mixin border-radius($radius) {
+    @include vendor(border-radius, $radius);
+}
+
+@mixin transition($args) {
+    @include vendor(transition, $args);
+}
+
+@mixin transform($args) {
+    @include vendor(transform, $args);
+}
+
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity = $opacity-ie);
+}
+
+@mixin animation-duration($duration) {
+    @include vendor(animation-duration, $duration);
+}
+
+@mixin animation-delay($delay) {
+    @include vendor(animation-delay, $delay);
+}
+
+@mixin box-sizing($box-sizing) {
+    @include vendor(box-sizing, $box-sizing);
+}
+
+@mixin appearance($appearance) {
+    @include vendor(appearance, $appearance);
+}
+
+@mixin text-size-adjust($value) {
+    @include vendor(text-size-adjust, $value);
+}
+
+@mixin touch-callout($value) {
+    @include vendor(touch-callout, $value);
+}
+
+@mixin tap-highlight-color($value) {
+    @include vendor(tap-highlight-color, $value);
+}
+
+@mixin overflow-scrolling($value) {
+    @include vendor(overflow-scrolling, $value);
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes $animation-name {
+        @content;
+    }
+
+    @-khtml-keyframes $animation-name {
+        @content;
+    }
+
+    @-moz-keyframes $animation-name {
+        @content;
+    }
+
+    @-ms-keyframes $animation-name {
+        @content;
+    }
+
+    @-o-keyframes $animation-name {
+        @content;
+    }
+
+    @keyframes $animation-name {
+        @content;
+    }
+}
+$widths: 5, 10, 20, 25, 30, 40, 50, 60, 70, 75, 80, 90, 95, 100;
+$fixed: top, left, right, bottom;
+$text-align: left, right, center, justify;
+
+@each $width in $widths {
+    %width-#{$width} {
+        width: percentage($width / 100);
+    }
+}
+
+%width-11 {
+    width: 11.1111111112%;
+}
+
+%width-12 {
+    width: 12.5555555556%;
+}
+
+%width-66 {
+    width: 66.6666666667%;
+}
+
+%width-33 {
+    width: 33.3333333334%;
+}
+
+%width-full {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    display: block;
+}
+
+@each $fix in $fixed {
+    %#{$fix} {
+        #{$fix}: 0;
+    }
+}
+
+@each $align in $text-align {
+    %text-#{$align} {
+        text-align: $align;
+    }
+}
+
+%fixed {
+    position: fixed;
+}
+
+%absolute {
+    position: absolute;
+}
+
+%float-right {
+    float: right;
+}
+
+%float-left {
+    float: left;
+}
+
+%invisible {
+    margin: -1px;
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip: rect(0, 0, 0, 0);
+    position: absolute;
+}
+
+%round {
+    @include border-radius(50%);
+}
+
+%ellipsis {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+%clear-fix {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+%safari-position-fixed-scrolling-fix {
+    display: table;
+}
+
+
+%scroll-horizontal {
+    overflow-x: auto;
+    white-space: nowrap;
+    div,
+    span,
+    nav {
+        display: inline-block;
+        vertical-align: top;
+    }
+}
+%scroll-vertical {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+%no-scroll {
+    overflow: hidden;
+}
+%no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
