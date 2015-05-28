@@ -1,0 +1,37 @@
+.center {
+    @include justify-content(center);
+}
+
+.vbox,
+.hbox,
+.center {
+    @include flexbox;
+    * {
+        @include flex(auto);
+    }
+}
+
+.vbox {
+    @include flex-direction(column);
+}
+
+.fit {
+    height: 100%;
+    width: 100%;
+}
+
+.fullscreen {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+.flex {
+    @include flexbox;
+}
+
+.inline-flexbox {
+    @include inline-flexbox;
+}

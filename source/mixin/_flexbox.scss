@@ -1,0 +1,63 @@
+@mixin flexbox {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+}
+
+@mixin inline-flexbox {
+    display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+}
+
+// flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
+@mixin flex($values) {
+    -webkit-box-flex: $values;
+    -moz-box-flex: $values;
+    -webkit-flex: $values;
+    -ms-flex: $values;
+    flex: $values;
+}
+
+// row, column, column-reverse, row-reverse;
+@mixin flex-direction($direction) {
+    -webkit-flex-direction: $direction;
+    -ms-flex-direction: $direction;
+    flex-direction: $direction;
+}
+
+@mixin flex-align($align) {
+    -webkit-box-align: $align;
+    -webkit-flex-align: $align;
+    -ms-flex-align: $align;
+    -webkit-align-items: $align;
+    align-items: $align;
+}
+
+//flex-start, flex-end, space-between, space-around,
+@mixin justify-content($value) {
+    -webkit-justify-content: $value;
+    justify-content: $value;
+    @if $value == "space-around" {
+        -ms-flex-pack: distribute;
+    }
+    @else if $value == "space-between" {
+        -ms-flex-pack: justify;
+    }
+    @else if $value == "flex-start" {
+        -ms-flex-pack: start;
+    }
+    @else if $value == "flex-end" {
+        -ms-flex-pack: end;
+    }
+}
+
+@mixin order($val) {
+    -webkit-box-ordinal-group: $val;
+    -moz-box-ordinal-group: $val;
+    -ms-flex-order: $val;
+    -webkit-order: $val;
+    order: $val;
+}

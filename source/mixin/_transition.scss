@@ -1,0 +1,84 @@
+@mixin vendor($var, $value) {
+    -webkit-#{$var}: $value;
+    -khtml-#{$var}: $value;
+    -moz-#{$var}: $value;
+    -ms-#{$var}: $value;
+    -o-#{$var}: $value;
+    #{$var}: $value;
+}
+
+@mixin border-radius($radius) {
+    @include vendor(border-radius, $radius);
+}
+
+@mixin transition($args) {
+    @include vendor(transition, $args);
+}
+
+@mixin transform($args) {
+    @include vendor(transform, $args);
+}
+
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity = $opacity-ie);
+}
+
+@mixin animation-duration($duration) {
+    @include vendor(animation-duration, $duration);
+}
+
+@mixin animation-delay($delay) {
+    @include vendor(animation-delay, $delay);
+}
+
+@mixin box-sizing($box-sizing) {
+    @include vendor(box-sizing, $box-sizing);
+}
+
+@mixin appearance($appearance) {
+    @include vendor(appearance, $appearance);
+}
+
+@mixin text-size-adjust($value) {
+    @include vendor(text-size-adjust, $value);
+}
+
+@mixin touch-callout($value) {
+    @include vendor(touch-callout, $value);
+}
+
+@mixin tap-highlight-color($value) {
+    @include vendor(tap-highlight-color, $value);
+}
+
+@mixin overflow-scrolling($value) {
+    @include vendor(overflow-scrolling, $value);
+}
+
+@mixin keyframes($animation-name) {
+    @-webkit-keyframes $animation-name {
+        @content;
+    }
+
+    @-khtml-keyframes $animation-name {
+        @content;
+    }
+
+    @-moz-keyframes $animation-name {
+        @content;
+    }
+
+    @-ms-keyframes $animation-name {
+        @content;
+    }
+
+    @-o-keyframes $animation-name {
+        @content;
+    }
+
+    @keyframes $animation-name {
+        @content;
+    }
+}
