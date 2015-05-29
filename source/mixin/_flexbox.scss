@@ -1,6 +1,4 @@
 @mixin flexbox {
-    display: -webkit-box;
-    display: -moz-box;
     display: -ms-flexbox;
     display: -webkit-flex;
     display: flex;
@@ -14,11 +12,52 @@
 
 // flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
 @mixin flex($values) {
-    -webkit-box-flex: $values;
-    -moz-box-flex: $values;
     -webkit-flex: $values;
     -ms-flex: $values;
     flex: $values;
+}
+
+@mixin order($val) {
+    -ms-flex-order: $val;
+    -webkit-order: $val;
+    order: $val;
+}
+
+//nowrap, wrap, wrap-reverse
+@mixin flex-wrap($value) {
+    -webkit-flex-wrap: $value;
+    -ms-flex-wrap: $value;
+    flex-wrap: $value;
+}
+
+@mixin flex-basis($value) {
+    -webkit-flex-basis: $value;
+    -ms-flex-basis: $value;
+    flex-basis: $value;
+}
+
+@mixin flex-shrink($value) {
+    -webkit-flex-shrink: $value;
+    -ms-flex-shrink: $value;
+    flex-shrink: $value;
+}
+
+@mixin flex-grow($value) {
+    -webkit-flex-grow: $value;
+    -ms-flex-grow: $value;
+    flex-grow: $value;
+}
+
+@mixin align-self($value) {
+    -webkit-align-self: $value;
+    -ms-flex-item-align: $value;
+    align-self: $value;
+    @if $value == "flex-start" {
+        -ms-flex-item-align: start;
+    }
+    @else if $value == "flex-end" {
+        -ms-flex-item-align: end;
+    }
 }
 
 // row, column, column-reverse, row-reverse;
@@ -28,18 +67,43 @@
     flex-direction: $direction;
 }
 
-@mixin flex-align($align) {
-    -webkit-box-align: $align;
-    -webkit-flex-align: $align;
-    -ms-flex-align: $align;
-    -webkit-align-items: $align;
-    align-items: $align;
+//flex-start, flex-end, center, baseline, stretch
+@mixin align-items($value) {
+    -webkit-align-items: $value;
+    justify-content: $value;
+    align-items: $value;
+    @if $value == "flex-start" {
+        -ms-flex-align: start;
+    }
+    @else if $value == "flex-end" {
+        -ms-flex-align: end;
+    }
 }
 
-//flex-start, flex-end, space-between, space-around,
+//flex-start, flex-end, space-between, space-around, center, stretch
+@mixin align-content($value) {
+    -webkit-align-content: $value;
+    align-content: $value;
+    -ms-flex-line-pack: $value;
+    @if $value == "space-around" {
+        -ms-flex-line-pack: distribute;
+    }
+    @else if $value == "space-between" {
+        -ms-flex-line-pack: justify;
+    }
+    @else if $value == "flex-start" {
+        -ms-flex-line-pack: start;
+    }
+    @else if $value == "flex-end" {
+        -ms-flex-line-pack: end;
+    }
+}
+
+//flex-start, flex-end, space-between, space-around
 @mixin justify-content($value) {
     -webkit-justify-content: $value;
     justify-content: $value;
+    -ms-flex-pack: $value;
     @if $value == "space-around" {
         -ms-flex-pack: distribute;
     }
@@ -52,12 +116,4 @@
     @else if $value == "flex-end" {
         -ms-flex-pack: end;
     }
-}
-
-@mixin order($val) {
-    -webkit-box-ordinal-group: $val;
-    -moz-box-ordinal-group: $val;
-    -ms-flex-order: $val;
-    -webkit-order: $val;
-    order: $val;
 }

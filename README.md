@@ -5,7 +5,7 @@ For more information on Obscene check the follow repositories.
 
 ## Repositories ##
 * [Obscene UI (Template for custom app themes)](http://unverschaemt.github.io/Obscene-UI)
-* [Obscene.js(Core functionality for Obscene UI)](https://github.com/unverschaemt/Obscene.js)
+* [Obscene.js (Core functionality for Obscene UI)](https://github.com/unverschaemt/Obscene.js)
 * [Obscene (React UI Library)](https://github.com/unverschaemt/Obscene)
 
 ## License
