@@ -70,7 +70,7 @@
 //flex-start, flex-end, center, baseline, stretch
 @mixin align-items($value) {
     -webkit-align-items: $value;
-    justify-content: $value;
+    -ms-flex-align: $value;
     align-items: $value;
     @if $value == "flex-start" {
         -ms-flex-align: start;
@@ -99,7 +99,7 @@
     }
 }
 
-//flex-start, flex-end, space-between, space-around
+//flex-start, flex-end, space-between, space-around, center
 @mixin justify-content($value) {
     -webkit-justify-content: $value;
     justify-content: $value;
