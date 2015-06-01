@@ -1,13 +1,72 @@
+$justify-content: "center", "space-around", "space-between", "flex-start", "flex-end";
+$flex-direction: "row", "column", "column-reverse", "row-reverse";
+$align-items: "center", "baseline", "stretch", "flex-start", "flex-end";
+$align-content: "center", "stretch", "space-around", "space-between", "flex-start", "flex-end";
+
+@each $value in $justify-content {
+    .justify-content-#{$value} {
+        @include justify-content(unquote($value));
+    }
+}
+
+@each $value in $flex-direction {
+    .flex-direction-#{$value} {
+        @include flex-direction(unquote($value));
+    }
+}
+
+@each $value in $align-items {
+    .align-items-#{$value} {
+        @include align-items(unquote($value));
+    }
+     .align-self-#{$value} {
+        @include align-self(unquote($value));
+    }
+}
+
+@each $value in $align-content {
+    .align-content-#{$value} {
+        @include align-content(unquote($value));
+    }
+}
+
+.flex {
+    @include flexbox;
+}
+
+.inline-flexbox {
+    @include inline-flexbox;
+}
+
+.center-main-axis {
+    @include justify-content(center);
+}
+
+.center-cross-axis {
+    @include align-items(center);
+}
+
 .center {
     @include justify-content(center);
+    @include align-items(center);
 }
 
 .vbox,
 .hbox,
-.center {
+.center,
+.center-main-axis,
+.center-cross-axis {
     @include flexbox;
     * {
-        @include flex(auto);
+        @include flex(0 1 auto);
+    }
+}
+
+.hbox, .vbox {
+    &.fill {
+        * {
+            @include flex(auto);
+        }
     }
 }
 
@@ -26,12 +85,4 @@
     bottom: 0;
     left: 0;
     position: absolute;
-}
-
-.flex {
-    @include flexbox;
-}
-
-.inline-flexbox {
-    @include inline-flexbox;
 }

@@ -1,9 +1,7 @@
 %scroll-horizontal {
     overflow-x: auto;
     white-space: nowrap;
-    div,
-    span,
-    nav {
+    * {
         display: inline-block;
         vertical-align: top;
     }
