@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../bin/core.min.css" type="text/css">
+    <link rel="stylesheet" href="../style.css" type="text/css">
+    <title>Obscene Core Testing| Layout: Fit</title>
+</head>
+
+<body>
+    <br>
+    <h1>fit</h1>
+    <h2>Box 1 should fit the div</h2>
+    <h2>Box 3 should fit Box 2</h2>
+    <div style="width: 500px; height: 400px">
+        <div class="fit" style="background: red">Box 1
+            <br>
+            <br>
+            <div style="background: red;width: 300px; height:300px; border-color: yellow; border-width: 5px">
+                <div class="fit" style="background: green">Box 3</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
