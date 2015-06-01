@@ -2,6 +2,7 @@ $justify-content: "center", "space-around", "space-between", "flex-start", "flex
 $flex-direction: "row", "column", "column-reverse", "row-reverse";
 $align-items: "center", "baseline", "stretch", "flex-start", "flex-end";
 $align-content: "center", "stretch", "space-around", "space-between", "flex-start", "flex-end";
+$wrap: "nowrap", "wrap", "wrap-reverse";
 
 @each $value in $justify-content {
     [flex-justify-content="#{$value}"] {
@@ -12,6 +13,11 @@ $align-content: "center", "stretch", "space-around", "space-between", "flex-star
 @each $value in $flex-direction {
     [flex-direction="#{$value}"] {
         @include flex-direction(unquote($value));
+    }
+}
+@each $value in $wrap {
+    [flex-direction="#{$value}"] {
+        @include flex-wrap(unquote($value));
     }
 }
 
