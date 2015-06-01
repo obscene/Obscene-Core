@@ -63,7 +63,7 @@ $align-content: "center", "stretch", "space-around", "space-between", "flex-star
 }
 
 .hbox, .vbox {
-    &.fill {
+    &.stretch {
         * {
             @include flex(auto);
         }
