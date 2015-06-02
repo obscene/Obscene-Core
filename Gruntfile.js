@@ -1,4 +1,14 @@
 module.exports = function (grunt) {
+
+    var flexboxTestFiles = ["align-content", "align-items", "align-self", "center", "hbox", "stretch", "vbox"];
+    var testFiles = {};
+
+    flexboxTestFiles.forEach(function (item) {
+        var filePath = 'test/bin/' + item + '.html';
+        var t = 'test/source/template/';
+        testFiles[filePath] = [t + 'head.html', 'test/source/layout/flexbox/' + item + '.html', t + 'foot.html'];
+    });
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         sass: {
@@ -36,11 +46,16 @@ module.exports = function (grunt) {
             }
         },
         concat: {
-            dist: {
-                src: ['source/mixin/*.scss', 'source/placeholder/*.scss', 'source/layout.scss', 'source/reset.scss', 'source/helper.scss'],
-                dest: 'bin/_core.scss'
+            core: {
+                dist: {
+                    src: ['source/mixin/*.scss', 'source/placeholder/*.scss', 'source/layout.scss', 'source/reset.scss', 'source/helper.scss'],
+                    dest: 'bin/_core.scss'
+                }
+            },
+            test: {
+                files: testFiles
             }
-        },
+        }
     });
     grunt.loadNpmTasks('grunt-contrib-sass');
     grunt.loadNpmTasks('grunt-contrib-watch');
@@ -48,6 +63,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.registerTask('default', ['sass']);
-    grunt.registerTask('build', ['sass', 'concat']);
+    grunt.registerTask('build', ['sass', 'concat:core', 'concat:test']);
     grunt.registerTask('deliver', ['build', 'copy']);
 };
