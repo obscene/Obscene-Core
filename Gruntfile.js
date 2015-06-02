@@ -47,7 +47,7 @@ module.exports = function (grunt) {
         },
         concat: {
             core: {
-                src: ['source/_*.scss'],
+                src: ['source/**/_*.scss'],
                 dest: 'bin/core.scss'
             },
             test: {

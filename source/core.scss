@@ -1,8 +1,15 @@
-@import "mixin";
-@import "placeholder";
+//Mixins
+@import "mixin/flexbox";
+@import "mixin/default";
+
+//Placeholder
+@import "placeholder/fix";
+@import "placeholder/default";
+@import "placeholder/scroll";
+
 @import "layout";
 @import "reset";
 
-//only include these if you need them
+//Only include these if you need them
 @import "attribute";
 @import "helper";
