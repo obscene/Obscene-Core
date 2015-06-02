@@ -46,10 +46,6 @@ module.exports = function (grunt) {
             }
         },
         concat: {
-            core: {
-                src: ['source/**/_*.scss'],
-                dest: 'bin/core.scss'
-            },
             test: {
                 files: testFiles
             }
@@ -61,6 +57,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.registerTask('default', ['sass']);
-    grunt.registerTask('build', ['sass', 'concat:core', 'concat:test']);
+    grunt.registerTask('build', ['sass', 'concat:test']);
     grunt.registerTask('deliver', ['build', 'copy']);
 };
