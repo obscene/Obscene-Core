@@ -47,10 +47,8 @@ module.exports = function (grunt) {
         },
         concat: {
             core: {
-                dist: {
-                    src: ['source/mixin/*.scss', 'source/placeholder/*.scss', 'source/layout.scss', 'source/reset.scss', 'source/helper.scss'],
-                    dest: 'bin/_core.scss'
-                }
+                src: ['source/mixin/*.scss', 'source/placeholder/*.scss', 'source/layout.scss', 'source/reset.scss', 'source/helper.scss'],
+                dest: 'bin/_core.scss'
             },
             test: {
                 files: testFiles
